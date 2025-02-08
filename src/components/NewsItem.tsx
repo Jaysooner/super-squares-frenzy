@@ -13,7 +13,7 @@ const NewsItem = ({ item, isOriginal }: NewsItemProps) => {
       href={item.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="mx-8 hover:text-gray-600 transition-colors inline-block"
+      className="mx-8 hover:text-blue-600 transition-colors inline-block font-medium"
     >
       {item.title} •
     </a>
@@ -21,4 +21,3 @@ const NewsItem = ({ item, isOriginal }: NewsItemProps) => {
 };
 
 export default NewsItem;
-

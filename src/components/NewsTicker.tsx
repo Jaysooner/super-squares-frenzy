@@ -26,7 +26,7 @@ const NewsTicker = () => {
 
   return (
     <div className="bg-gray-100 text-gray-900 overflow-hidden py-2 border-b border-gray-200">
-      <div className="animate-[slide_30s_linear_infinite] whitespace-nowrap inline-block">
+      <div className="animate-[slide_60s_linear_infinite] whitespace-nowrap inline-block">
         {news.map((item) => (
           <NewsItem key={item.title} item={item} isOriginal={true} />
         ))}
@@ -40,4 +40,3 @@ const NewsTicker = () => {
 };
 
 export default NewsTicker;
-
