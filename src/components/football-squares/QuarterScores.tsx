@@ -9,7 +9,7 @@ interface QuarterScoresProps {
   selectedQuarter: string;
   setSelectedQuarter: (quarter: string) => void;
   scores: Scores;
-  setScores: (scores: Scores) => void;
+  setScores: React.Dispatch<React.SetStateAction<Scores>>;
   setQuarterScore: () => void;
   quarterWinners: QuarterWinners;
 }
@@ -43,7 +43,7 @@ export const QuarterScores = ({
             type="number"
             placeholder="Chiefs Score"
             value={scores.chiefs}
-            onChange={e => setScores(prev => ({ ...prev, chiefs: e.target.value }))}
+            onChange={e => setScores({ ...scores, chiefs: e.target.value })}
             className="bg-white/5 border-white/10 text-white pl-12"
           />
           <img
@@ -57,7 +57,7 @@ export const QuarterScores = ({
             type="number"
             placeholder="Eagles Score"
             value={scores.eagles}
-            onChange={e => setScores(prev => ({ ...prev, eagles: e.target.value }))}
+            onChange={e => setScores({ ...scores, eagles: e.target.value })}
             className="bg-white/5 border-white/10 text-white pl-12"
           />
           <img
