@@ -43,29 +43,37 @@ export const SquaresGrid = ({
                     .map(square => (
                       <td
                         key={`${square.row}-${square.col}`}
-                        className="p-4 text-center border-l border-white/10"
+                        className="p-4 text-center border-l border-white/10 relative"
+                        style={{
+                          backgroundImage: 'url("/eagles-thumbnail.png")',
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                          backgroundBlend: 'overlay'
+                        }}
                       >
-                        <Select
-                          value={square.player}
-                          onValueChange={(value) =>
-                            assignPlayerToSquare(square.row, square.col, value)
-                          }
-                        >
-                          <SelectTrigger className="w-full bg-white/5 border-white/10">
-                            <SelectValue
-                              placeholder={
-                                <span className="text-white/60">Select Player</span>
-                              }
-                            />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {players.map(player => (
-                              <SelectItem key={player.id} value={player.name}>
-                                {player.name}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        <div className="relative z-10 bg-black/50 rounded">
+                          <Select
+                            value={square.player}
+                            onValueChange={(value) =>
+                              assignPlayerToSquare(square.row, square.col, value)
+                            }
+                          >
+                            <SelectTrigger className="w-full bg-white/5 border-white/10">
+                              <SelectValue
+                                placeholder={
+                                  <span className="text-white/60">Select Player</span>
+                                }
+                              />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {players.map(player => (
+                                <SelectItem key={player.id} value={player.name}>
+                                  {player.name}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
                       </td>
                     ))}
                 </tr>
