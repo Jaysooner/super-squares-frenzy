@@ -21,3 +21,4 @@ const NewsItem = ({ item, isOriginal }: NewsItemProps) => {
 };
 
 export default NewsItem;
+

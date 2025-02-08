@@ -22,3 +22,4 @@ export const fetchNewsItems = async (): Promise<NewsItem[]> => {
     return [];
   }
 };
+
