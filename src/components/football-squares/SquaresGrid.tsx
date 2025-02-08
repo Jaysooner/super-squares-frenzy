@@ -38,7 +38,7 @@ export const SquaresGrid = ({
                     }}
                   >
                     <div className="flex flex-col items-center">
-                      <span className="mt-1 text-sm">{digit === -1 ? "?" : digit}</span>
+                      <span className="mt-1 text-sm text-black">{digit === -1 ? "?" : digit}</span>
                     </div>
                   </th>
                 ))}
