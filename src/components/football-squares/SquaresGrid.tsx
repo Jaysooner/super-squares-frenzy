@@ -38,7 +38,6 @@ export const SquaresGrid = ({
                     }}
                   >
                     <div className="flex flex-col items-center">
-                      <span>Chiefs</span>
                       <span className="mt-1 text-sm text-gray-400">{digit === -1 ? "?" : digit}</span>
                     </div>
                   </th>
@@ -92,3 +91,4 @@ export const SquaresGrid = ({
     </div>
   );
 };
+
