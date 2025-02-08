@@ -34,11 +34,12 @@ export const SquaresGrid = ({
                       backgroundSize: '60%',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat',
-                      backgroundBlendMode: 'soft-light'
+                      backgroundBlendMode: 'soft-light',
+                      opacity: '0.5'
                     }}
                   >
                     <div className="flex flex-col items-center">
-                      <span className="mt-1 text-sm text-black">{digit === -1 ? "?" : digit}</span>
+                      <span className="mt-1 text-4xl font-bold text-black">{digit === -1 ? "?" : digit}</span>
                     </div>
                   </th>
                 ))}
@@ -91,4 +92,3 @@ export const SquaresGrid = ({
     </div>
   );
 };
-
