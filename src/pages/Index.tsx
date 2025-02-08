@@ -1,4 +1,3 @@
-
 import { useState, useCallback, useEffect } from "react";
 import { ChevronDown, Trophy, Users } from "lucide-react";
 import NewsTicker from "@/components/NewsTicker";
@@ -65,8 +64,7 @@ const Index = () => {
       );
       
       const data = await response.json();
-      // Note: This is a mock interpretation since the actual API response structure might differ
-      if (data && data.body) {
+      if (data && Array.isArray(data.body)) {
         const game = data.body.find((game: any) => 
           game.teams.some((team: any) => team.includes('Chiefs')) && 
           game.teams.some((team: any) => team.includes('Eagles'))
@@ -205,7 +203,7 @@ const Index = () => {
             <div className="bg-red-600/20 backdrop-blur-lg rounded-xl p-4 flex-1 text-center">
               <div className="flex items-center justify-center gap-4">
                 <img
-                  src="/lovable-uploads/7e47b99c-a255-4a58-8529-23088cc9c4d8.png"
+                  src="lovable-uploads/7e47b99c-a255-4a58-8529-23088cc9c4d8.png"
                   alt="Chiefs Logo"
                   className="w-12 h-12 object-contain"
                 />
@@ -227,7 +225,7 @@ const Index = () => {
             <div className="bg-green-600/20 backdrop-blur-lg rounded-xl p-4 flex-1 text-center">
               <div className="flex items-center justify-center gap-4">
                 <img
-                  src="/lovable-uploads/b3057b61-455e-4346-b5e6-4b9efbf3eb9e.png"
+                  src="lovable-uploads/b3057b61-455e-4346-b5e6-4b9efbf3eb9e.png"
                   alt="Eagles Logo"
                   className="w-12 h-12 object-contain"
                 />
@@ -324,7 +322,7 @@ const Index = () => {
                   className="bg-white/5 border-white/10 text-white pl-12"
                 />
                 <img
-                  src="/lovable-uploads/7e47b99c-a255-4a58-8529-23088cc9c4d8.png"
+                  src="lovable-uploads/7e47b99c-a255-4a58-8529-23088cc9c4d8.png"
                   alt="Chiefs Logo"
                   className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 object-contain"
                 />
@@ -338,7 +336,7 @@ const Index = () => {
                   className="bg-white/5 border-white/10 text-white pl-12"
                 />
                 <img
-                  src="/lovable-uploads/b3057b61-455e-4346-b5e6-4b9efbf3eb9e.png"
+                  src="lovable-uploads/b3057b61-455e-4346-b5e6-4b9efbf3eb9e.png"
                   alt="Eagles Logo"
                   className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 object-contain"
                 />
