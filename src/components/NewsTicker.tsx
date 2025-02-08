@@ -42,7 +42,7 @@ const NewsTicker = () => {
   }, []);
 
   return (
-    <div className="bg-gray-900 text-white overflow-hidden py-2 border-b border-gray-800">
+    <div className="bg-gray-100 text-gray-900 overflow-hidden py-2 border-b border-gray-200">
       <div className="animate-[slide_30s_linear_infinite] whitespace-nowrap inline-block">
         {news.map((item, index) => (
           <a
@@ -50,7 +50,7 @@ const NewsTicker = () => {
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="mx-8 hover:text-gray-300 transition-colors inline-block"
+            className="mx-8 hover:text-gray-600 transition-colors inline-block"
           >
             {item.title}
           </a>
