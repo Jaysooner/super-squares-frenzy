@@ -24,7 +24,7 @@ const NewsTicker = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Fixed animation duration of 192s (50% slower than the previous slowest speed of 96s)
+  // Fixed animation duration of 192s (50% slower than the previous slowest speed)
   const animationDuration = 192;
 
   return (
