@@ -1,6 +1,5 @@
-
 import { useState, useCallback, useEffect } from "react";
-import { ChevronDown, Trophy, Users, Football } from "lucide-react";
+import { ChevronDown, Trophy, Users } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -33,7 +32,6 @@ const Index = () => {
   const [selectedQuarter, setSelectedQuarter] = useState("Q1");
   const [scores, setScores] = useState({ chiefs: "", eagles: "" });
 
-  // Initialize squares
   useEffect(() => {
     const initialSquares = [];
     for (let i = 0; i < 10; i++) {
@@ -117,7 +115,6 @@ const Index = () => {
           </p>
         </div>
 
-        {/* Player Management */}
         <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 space-y-4">
           <div className="flex items-center gap-4 flex-wrap">
             <div className="flex-1 min-w-[200px]">
@@ -150,7 +147,6 @@ const Index = () => {
           )}
         </div>
 
-        {/* Game Controls */}
         <div className="flex justify-center">
           <Button
             onClick={randomizeNumbers}
@@ -161,7 +157,6 @@ const Index = () => {
           </Button>
         </div>
 
-        {/* Squares Grid */}
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full align-middle">
             <div className="overflow-hidden shadow-lg rounded-lg bg-white/5 backdrop-blur-lg">
@@ -220,7 +215,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Quarter Scores */}
         <div className="bg-white/10 backdrop-blur-lg rounded-xl p-6 space-y-4">
           <h3 className="text-xl font-semibold">Quarter Scores</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -258,11 +252,10 @@ const Index = () => {
             onClick={setQuarterScore}
             className="w-full bg-purple-600 hover:bg-purple-700"
           >
-            <Football className="mr-2 h-4 w-4" />
+            <Trophy className="mr-2 h-4 w-4" />
             Set Quarter Score
           </Button>
 
-          {/* Quarter Winners Display */}
           <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
             {["Q1", "Q2", "Q3", "Q4"].map(quarter => (
               <div
