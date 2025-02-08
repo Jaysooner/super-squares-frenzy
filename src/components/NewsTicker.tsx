@@ -1,71 +1,38 @@
 
 import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
-
-interface NewsItem {
-  title: string;
-  link: string;
-}
+import { NewsItem as NewsItemType } from "@/types/news";
+import { fetchNewsItems } from "@/services/newsService";
+import NewsItem from "./NewsItem";
+import { toast } from "sonner";
 
 const NewsTicker = () => {
-  const [news, setNews] = useState<NewsItem[]>([]);
+  const [news, setNews] = useState<NewsItemType[]>([]);
 
   useEffect(() => {
-    const fetchNews = async () => {
+    const updateNews = async () => {
       try {
-        // Using a CORS proxy to fetch RSS feed
-        const response = await fetch(
-          'https://api.allorigins.win/raw?url=' + 
-          encodeURIComponent('https://www.nfl.com/rss/rsslanding?categoryId=10')
-        );
-        const data = await response.text();
-        
-        // Parse the XML manually since we can't use rss-parser in the browser
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(data, "text/xml");
-        const items = xml.querySelectorAll("item");
-        
-        const newsItems: NewsItem[] = Array.from(items).slice(0, 10).map((item) => ({
-          title: item.querySelector("title")?.textContent || "",
-          link: item.querySelector("link")?.textContent || "#"
-        }));
-        
+        const newsItems = await fetchNewsItems();
         setNews(newsItems);
       } catch (error) {
-        console.error("Error fetching news:", error);
+        console.error("Error updating news:", error);
+        toast.error("Failed to fetch news updates");
       }
     };
 
-    fetchNews();
-    const interval = setInterval(fetchNews, 300000); // Refresh every 5 minutes
+    updateNews();
+    const interval = setInterval(updateNews, 300000); // Refresh every 5 minutes
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="bg-gray-100 text-gray-900 overflow-hidden py-2 border-b border-gray-200">
       <div className="animate-[slide_30s_linear_infinite] whitespace-nowrap inline-block">
-        {news.map((item, index) => (
-          <a
-            key={index}
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mx-8 hover:text-gray-600 transition-colors inline-block"
-          >
-            {item.title} •
-          </a>
+        {news.map((item) => (
+          <NewsItem key={item.title} item={item} isOriginal={true} />
         ))}
         {/* Duplicate items to create seamless loop */}
-        {news.map((item, index) => (
-          <a
-            key={`duplicate-${index}`}
-            href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mx-8 hover:text-gray-600 transition-colors inline-block"
-          >
-            {item.title} •
-          </a>
+        {news.map((item) => (
+          <NewsItem key={`duplicate-${item.title}`} item={item} isOriginal={false} />
         ))}
       </div>
     </div>
