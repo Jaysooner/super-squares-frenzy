@@ -52,7 +52,19 @@ const NewsTicker = () => {
             rel="noopener noreferrer"
             className="mx-8 hover:text-gray-600 transition-colors inline-block"
           >
-            {item.title}
+            {item.title} •
+          </a>
+        ))}
+        {/* Duplicate items to create seamless loop */}
+        {news.map((item, index) => (
+          <a
+            key={`duplicate-${index}`}
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-8 hover:text-gray-600 transition-colors inline-block"
+          >
+            {item.title} •
           </a>
         ))}
       </div>
