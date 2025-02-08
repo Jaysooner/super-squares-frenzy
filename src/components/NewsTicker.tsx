@@ -29,6 +29,18 @@ const NewsTicker = () => {
 
   return (
     <div className="relative">
+      <style>
+        {`
+          @keyframes slide {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+        `}
+      </style>
       <div className="bg-[#1A1F2C] text-gray-100 overflow-hidden py-2 border-b border-gray-800">
         <div 
           className="whitespace-nowrap inline-block" 
@@ -48,4 +60,3 @@ const NewsTicker = () => {
 };
 
 export default NewsTicker;
-
