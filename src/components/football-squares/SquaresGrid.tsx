@@ -44,12 +44,6 @@ export const SquaresGrid = ({
                       <td
                         key={`${square.row}-${square.col}`}
                         className="p-4 text-center border-l border-white/10 relative"
-                        style={{
-                          backgroundImage: 'url("/eagles-thumbnail.png")',
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center',
-                          backgroundBlendMode: 'overlay'
-                        }}
                       >
                         <div className="relative z-10 bg-black/50 rounded">
                           <Select
@@ -85,3 +79,4 @@ export const SquaresGrid = ({
     </div>
   );
 };
+
