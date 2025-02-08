@@ -48,7 +48,7 @@ export const SquaresGrid = ({
                           backgroundImage: 'url("/eagles-thumbnail.png")',
                           backgroundSize: 'cover',
                           backgroundPosition: 'center',
-                          backgroundBlend: 'overlay'
+                          backgroundBlendMode: 'overlay'
                         }}
                       >
                         <div className="relative z-10 bg-black/50 rounded">
