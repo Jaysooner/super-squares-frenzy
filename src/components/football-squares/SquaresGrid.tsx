@@ -29,17 +29,24 @@ export const SquaresGrid = ({
                   <th 
                     key={i} 
                     className="p-4 text-center border-l border-white/10"
-                    style={{
-                      backgroundImage: 'url("/lovable-uploads/067bd221-b180-49aa-8f25-6a51f346c6be.png")',
-                      backgroundSize: '60%',
-                      backgroundPosition: 'center',
-                      backgroundRepeat: 'no-repeat',
-                      backgroundBlendMode: 'soft-light',
-                      opacity: '0.25'
-                    }}
                   >
-                    <div className="flex flex-col items-center">
-                      <span className="mt-1 text-6xl font-bold text-[#FEF7CD]">{digit === -1 ? "?" : digit}</span>
+                    <div className="flex flex-col items-center gap-2">
+                      <div
+                        className="w-full h-16"
+                        style={{
+                          backgroundImage: 'url("/lovable-uploads/067bd221-b180-49aa-8f25-6a51f346c6be.png")',
+                          backgroundSize: '60%',
+                          backgroundPosition: 'center',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundBlendMode: 'soft-light',
+                          opacity: '0.25'
+                        }}
+                      />
+                      <div className="bg-black/50 px-4 py-2 rounded-lg">
+                        <span className="text-4xl font-bold text-[#FEF7CD]">
+                          {digit === -1 ? "?" : digit}
+                        </span>
+                      </div>
                     </div>
                   </th>
                 ))}
@@ -92,3 +99,4 @@ export const SquaresGrid = ({
     </div>
   );
 };
+
