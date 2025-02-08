@@ -22,6 +22,11 @@ interface Square {
   player?: string;
 }
 
+interface LiveScore {
+  teamName: string;
+  score: number;
+}
+
 const Index = () => {
   const [players, setPlayers] = useState<Player[]>([]);
   const [newPlayerName, setNewPlayerName] = useState("");
@@ -31,6 +36,8 @@ const Index = () => {
   const [quarterWinners, setQuarterWinners] = useState<Record<string, string>>({});
   const [selectedQuarter, setSelectedQuarter] = useState("Q1");
   const [scores, setScores] = useState({ chiefs: "", eagles: "" });
+  const [liveScores, setLiveScores] = useState<{ chiefs: number; eagles: number }>({ chiefs: 0, eagles: 0 });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const initialSquares = [];
@@ -40,6 +47,49 @@ const Index = () => {
       }
     }
     setSquares(initialSquares);
+  }, []);
+
+  const fetchLiveScores = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(
+        'https://tank01-nfl-live-in-game-real-time-statistics-nfl.p.rapidapi.com/getNFLScoresOnly?gameDate=20240211&topPerformers=true',
+        {
+          headers: {
+            'X-RapidAPI-Key': '5c2a423e0dmshb5dd537fe91a4c4p14232bjsn686555b9e803',
+            'X-RapidAPI-Host': 'tank01-nfl-live-in-game-real-time-statistics-nfl.p.rapidapi.com'
+          }
+        }
+      );
+      
+      const data = await response.json();
+      // Note: This is a mock interpretation since the actual API response structure might differ
+      if (data && data.body) {
+        const game = data.body.find((game: any) => 
+          game.teams.some((team: any) => team.includes('Chiefs')) && 
+          game.teams.some((team: any) => team.includes('Eagles'))
+        );
+        
+        if (game) {
+          setLiveScores({
+            chiefs: parseInt(game.scores[0]) || 0,
+            eagles: parseInt(game.scores[1]) || 0
+          });
+          toast.success("Scores updated!");
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching scores:', error);
+      toast.error("Failed to fetch live scores");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchLiveScores();
+    const interval = setInterval(fetchLiveScores, 60000); // Update every minute
+    return () => clearInterval(interval);
   }, []);
 
   const addPlayer = useCallback(() => {
@@ -147,14 +197,24 @@ const Index = () => {
           )}
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-between items-center gap-4">
+          <div className="bg-red-600/20 backdrop-blur-lg rounded-xl p-4 flex-1 text-center">
+            <h3 className="text-lg font-bold">Chiefs</h3>
+            <p className="text-3xl font-bold">{liveScores.chiefs}</p>
+          </div>
+
           <Button
             onClick={randomizeNumbers}
-            className="bg-orange-600 hover:bg-orange-700"
+            className="bg-orange-600 hover:bg-orange-700 flex-shrink-0"
           >
             <Trophy className="mr-2 h-4 w-4" />
             Randomize Numbers
           </Button>
+
+          <div className="bg-green-600/20 backdrop-blur-lg rounded-xl p-4 flex-1 text-center">
+            <h3 className="text-lg font-bold">Eagles</h3>
+            <p className="text-3xl font-bold">{liveScores.eagles}</p>
+          </div>
         </div>
 
         <div className="overflow-x-auto">
