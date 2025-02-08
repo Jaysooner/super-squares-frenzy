@@ -11,9 +11,9 @@ export const ScoreDisplay = ({ liveScores }: ScoreDisplayProps) => {
       <div className="bg-red-600/20 backdrop-blur-lg rounded-xl p-4 flex-1 text-center">
         <div className="flex items-center justify-center gap-4">
           <img
-            src="lovable-uploads/7e47b99c-a255-4a58-8529-23088cc9c4d8.png"
+            src="lovable-uploads/a80a7051-2916-4aa4-a103-991c487416c5.png"
             alt="Chiefs Logo"
-            className="w-12 h-12 object-contain opacity-100"
+            className="w-12 h-12 object-contain"
           />
           <div>
             <h3 className="text-lg font-bold">Chiefs</h3>
