@@ -33,7 +33,7 @@ const NewsTicker = () => {
 
   return (
     <div className="relative">
-      <div className="bg-gray-100 text-gray-900 overflow-hidden py-2 border-b border-gray-200">
+      <div className="bg-[#1A1F2C] text-gray-100 overflow-hidden py-2 border-b border-gray-800">
         <div 
           className="whitespace-nowrap inline-block" 
           style={{ animation: `slide ${speed[0]}s linear infinite` }}
@@ -47,9 +47,9 @@ const NewsTicker = () => {
           ))}
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 transform translate-y-full bg-white p-4 shadow-lg rounded-b-lg">
+      <div className="absolute bottom-0 left-0 right-0 transform translate-y-full bg-[#1A1F2C] p-4 shadow-lg rounded-b-lg border border-gray-800">
         <div className="max-w-xs mx-auto">
-          <p className="text-sm text-gray-600 mb-2">Ticker Speed Control</p>
+          <p className="text-sm text-gray-300 mb-2">Ticker Speed Control</p>
           <Slider
             value={speed}
             onValueChange={handleSpeedChange}
@@ -59,8 +59,8 @@ const NewsTicker = () => {
             className="w-full"
           />
           <div className="flex justify-between mt-1">
-            <span className="text-xs text-gray-500">Faster</span>
-            <span className="text-xs text-gray-500">Slower</span>
+            <span className="text-xs text-gray-400">Faster</span>
+            <span className="text-xs text-gray-400">Slower</span>
           </div>
         </div>
       </div>
