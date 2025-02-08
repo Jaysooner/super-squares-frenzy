@@ -20,7 +20,16 @@ export const SquaresGrid = ({
   return (
     <div className="overflow-x-auto">
       <div className="inline-block min-w-full align-middle">
-        <div className="overflow-hidden shadow-lg rounded-lg bg-white/5 backdrop-blur-lg">
+        <div 
+          className="overflow-hidden shadow-lg rounded-lg bg-white/5 backdrop-blur-lg"
+          style={{
+            backgroundImage: 'url("/lovable-uploads/04e0745d-fe71-4804-a807-e37582cd83c1.png")',
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundBlendMode: 'overlay'
+          }}
+        >
           <table className="min-w-full divide-y divide-white/10">
             <thead>
               <tr>
@@ -79,4 +88,3 @@ export const SquaresGrid = ({
     </div>
   );
 };
-
