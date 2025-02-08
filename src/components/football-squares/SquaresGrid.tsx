@@ -56,7 +56,23 @@ export const SquaresGrid = ({
               {rowDigits.map((rowDigit, row) => (
                 <tr key={row}>
                   <td className="p-4 text-center border-r border-white/10">
-                    Eagles: {rowDigit === -1 ? "?" : rowDigit}
+                    <div className="flex items-center gap-4 justify-center">
+                      <div
+                        className="w-16 h-16"
+                        style={{
+                          backgroundImage: 'url("/lovable-uploads/d654ad82-5575-44bd-beb0-0d6650728404.png")',
+                          backgroundSize: 'contain',
+                          backgroundPosition: 'center',
+                          backgroundRepeat: 'no-repeat',
+                          opacity: '0.8'
+                        }}
+                      />
+                      <div className="bg-black/50 px-4 py-2 rounded-lg">
+                        <span className="text-4xl font-bold text-[#FEF7CD]">
+                          {rowDigit === -1 ? "?" : rowDigit}
+                        </span>
+                      </div>
+                    </div>
                   </td>
                   {squares
                     .filter(square => square.row === row)
@@ -99,4 +115,3 @@ export const SquaresGrid = ({
     </div>
   );
 };
-
