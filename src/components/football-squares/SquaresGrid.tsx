@@ -36,7 +36,10 @@ export const SquaresGrid = ({
                 <th className="p-4 text-center">KC vs PHI</th>
                 {columnDigits.map((digit, i) => (
                   <th key={i} className="p-4 text-center border-l border-white/10">
-                    Chiefs: {digit === -1 ? "?" : digit}
+                    <div className="flex flex-col items-center">
+                      <span>Chiefs</span>
+                      <span className="mt-1 text-sm text-gray-400">{digit === -1 ? "?" : digit}</span>
+                    </div>
                   </th>
                 ))}
               </tr>
@@ -88,3 +91,4 @@ export const SquaresGrid = ({
     </div>
   );
 };
+
