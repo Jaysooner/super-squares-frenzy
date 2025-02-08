@@ -26,7 +26,17 @@ export const SquaresGrid = ({
               <tr>
                 <th className="p-4 text-center">KC vs PHI</th>
                 {columnDigits.map((digit, i) => (
-                  <th key={i} className="p-4 text-center border-l border-white/10">
+                  <th 
+                    key={i} 
+                    className="p-4 text-center border-l border-white/10"
+                    style={{
+                      backgroundImage: 'url("/lovable-uploads/067bd221-b180-49aa-8f25-6a51f346c6be.png")',
+                      backgroundSize: '60%',
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundBlendMode: 'soft-light'
+                    }}
+                  >
                     <div className="flex flex-col items-center">
                       <span>Chiefs</span>
                       <span className="mt-1 text-sm text-gray-400">{digit === -1 ? "?" : digit}</span>
@@ -47,13 +57,6 @@ export const SquaresGrid = ({
                       <td
                         key={`${square.row}-${square.col}`}
                         className="p-4 text-center border-l border-white/10 relative"
-                        style={{
-                          backgroundImage: 'url("/lovable-uploads/067bd221-b180-49aa-8f25-6a51f346c6be.png")',
-                          backgroundSize: '60%',
-                          backgroundPosition: 'center',
-                          backgroundRepeat: 'no-repeat',
-                          backgroundBlendMode: 'soft-light'
-                        }}
                       >
                         <div className="relative z-10 bg-black/50 rounded">
                           <Select
@@ -89,4 +92,3 @@ export const SquaresGrid = ({
     </div>
   );
 };
-
