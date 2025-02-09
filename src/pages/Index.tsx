@@ -1,4 +1,3 @@
-
 import { useState, useCallback, useEffect } from "react";
 import { Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -108,9 +107,15 @@ const Index = () => {
     if (square?.player) {
       setQuarterWinners(prev => ({
         ...prev,
-        [selectedQuarter]: square.player
+        [selectedQuarter]: {
+          player: square.player,
+          chiefs: scores.chiefs,
+          eagles: scores.eagles
+        }
       }));
       toast.success(`${selectedQuarter} winner: ${square.player}`);
+    } else {
+      toast.error("No player found for this square");
     }
   }, [scores, selectedQuarter, squares, columnDigits, rowDigits]);
 

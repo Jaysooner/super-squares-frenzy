@@ -47,7 +47,7 @@ export const QuarterScores = ({
             className="bg-white/5 border-white/10 text-white pl-12"
           />
           <img
-            src="lovable-uploads/7e47b99c-a255-4a58-8529-23088cc9c4d8.png"
+            src="/lovable-uploads/7e47b99c-a255-4a58-8529-23088cc9c4d8.png"
             alt="Chiefs Logo"
             className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 object-contain"
           />
@@ -61,7 +61,7 @@ export const QuarterScores = ({
             className="bg-white/5 border-white/10 text-white pl-12"
           />
           <img
-            src="lovable-uploads/b3057b61-455e-4346-b5e6-4b9efbf3eb9e.png"
+            src="/lovable-uploads/b3057b61-455e-4346-b5e6-4b9efbf3eb9e.png"
             alt="Eagles Logo"
             className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 object-contain"
           />
@@ -76,7 +76,31 @@ export const QuarterScores = ({
         {["Q1", "Q2", "Q3", "Q4"].map(quarter => (
           <div key={quarter} className="bg-white/5 rounded-lg p-4 text-center space-y-2">
             <div className="text-sm text-gray-400">{quarter}</div>
-            <div className="font-semibold">{quarterWinners[quarter] || "Not Set"}</div>
+            {quarterWinners[quarter] ? (
+              <>
+                <div className="flex items-center justify-center gap-2">
+                  <img
+                    src="/lovable-uploads/7e47b99c-a255-4a58-8529-23088cc9c4d8.png"
+                    alt="Chiefs"
+                    className="w-6 h-6"
+                  />
+                  <span className="text-lg">{quarterWinners[quarter].chiefs}</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <img
+                    src="/lovable-uploads/b3057b61-455e-4346-b5e6-4b9efbf3eb9e.png"
+                    alt="Eagles"
+                    className="w-6 h-6"
+                  />
+                  <span className="text-lg">{quarterWinners[quarter].eagles}</span>
+                </div>
+                <div className="font-semibold text-purple-300">
+                  Winner: {quarterWinners[quarter].player}
+                </div>
+              </>
+            ) : (
+              <div className="text-gray-500">Not Set</div>
+            )}
           </div>
         ))}
       </div>

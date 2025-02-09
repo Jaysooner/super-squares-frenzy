@@ -1,4 +1,3 @@
-
 export interface Player {
   id: number;
   name: string;
@@ -21,5 +20,9 @@ export interface Scores {
 }
 
 export interface QuarterWinners {
-  [key: string]: string;
+  [key: string]: {
+    player: string;
+    chiefs: string;
+    eagles: string;
+  };
 }
