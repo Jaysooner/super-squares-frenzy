@@ -1,6 +1,7 @@
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Player, Square } from "@/types/football";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface SquaresGridProps {
   columnDigits: number[];
@@ -17,6 +18,8 @@ export const SquaresGrid = ({
   players,
   assignPlayerToSquare,
 }: SquaresGridProps) => {
+  const isMobile = useIsMobile();
+
   return (
     <div className="overflow-x-auto">
       <div className="inline-block min-w-full align-middle">
@@ -24,15 +27,15 @@ export const SquaresGrid = ({
           <table className="min-w-full divide-y divide-white/10">
             <thead>
               <tr>
-                <th className="p-4 text-center">KC vs PHI</th>
+                <th className="p-2 md:p-4 text-center">KC vs PHI</th>
                 {columnDigits.map((digit, i) => (
                   <th 
                     key={i} 
-                    className="p-4 text-center border-l border-white/10"
+                    className="p-2 md:p-4 text-center border-l border-white/10"
                   >
-                    <div className="flex flex-col items-center gap-2">
+                    <div className="flex flex-col items-center gap-1 md:gap-2">
                       <div
-                        className="w-full h-16"
+                        className="w-full h-8 md:h-16"
                         style={{
                           backgroundImage: 'url("/lovable-uploads/067bd221-b180-49aa-8f25-6a51f346c6be.png")',
                           backgroundSize: '60%',
@@ -42,8 +45,8 @@ export const SquaresGrid = ({
                           opacity: '0.25'
                         }}
                       />
-                      <div className="bg-black/50 px-4 py-2 rounded-lg">
-                        <span className="text-4xl font-bold text-[#FEF7CD]">
+                      <div className="bg-black/50 px-2 md:px-4 py-1 md:py-2 rounded-lg">
+                        <span className="text-2xl md:text-4xl font-bold text-[#FEF7CD]">
                           {digit === -1 ? "?" : digit}
                         </span>
                       </div>
@@ -55,10 +58,10 @@ export const SquaresGrid = ({
             <tbody className="divide-y divide-white/10">
               {rowDigits.map((rowDigit, row) => (
                 <tr key={row}>
-                  <td className="p-4 text-center border-r border-white/10">
-                    <div className="flex items-center gap-4 justify-center">
+                  <td className="p-2 md:p-4 text-center border-r border-white/10">
+                    <div className="flex items-center gap-2 md:gap-4 justify-center">
                       <div
-                        className="w-16 h-16"
+                        className="w-8 h-8 md:w-16 md:h-16"
                         style={{
                           backgroundImage: 'url("/lovable-uploads/d654ad82-5575-44bd-beb0-0d6650728404.png")',
                           backgroundSize: 'contain',
@@ -67,8 +70,8 @@ export const SquaresGrid = ({
                           opacity: '0.8'
                         }}
                       />
-                      <div className="bg-black/50 px-4 py-2 rounded-lg">
-                        <span className="text-4xl font-bold text-[#FEF7CD]">
+                      <div className="bg-black/50 px-2 md:px-4 py-1 md:py-2 rounded-lg">
+                        <span className="text-2xl md:text-4xl font-bold text-[#FEF7CD]">
                           {rowDigit === -1 ? "?" : rowDigit}
                         </span>
                       </div>
@@ -79,7 +82,7 @@ export const SquaresGrid = ({
                     .map(square => (
                       <td
                         key={`${square.row}-${square.col}`}
-                        className="p-4 text-center border-l border-white/10 relative"
+                        className="p-2 md:p-4 text-center border-l border-white/10 relative"
                       >
                         <div className="relative z-10 bg-black/50 rounded">
                           <Select
@@ -88,10 +91,10 @@ export const SquaresGrid = ({
                               assignPlayerToSquare(square.row, square.col, value)
                             }
                           >
-                            <SelectTrigger className="w-full bg-white/5 border-white/10">
+                            <SelectTrigger className="w-full bg-white/5 border-white/10 text-sm md:text-base min-h-8 md:min-h-10">
                               <SelectValue
                                 placeholder={
-                                  <span className="text-white/60">Select Player</span>
+                                  <span className="text-white/60">{isMobile ? "Select" : "Select Player"}</span>
                                 }
                               />
                             </SelectTrigger>
@@ -115,3 +118,4 @@ export const SquaresGrid = ({
     </div>
   );
 };
+
